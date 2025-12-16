@@ -77,7 +77,10 @@ public class PrimaryController implements javafx.fxml.Initializable {
     @FXML
     private void onActionRechercherEtudiant(ActionEvent event) {
         Etudiant e = (Etudiant) cbEtudiants.getSelectionModel().getSelectedItem();
-        throw new UnsupportedOperationException("A faire !!!");
+        for( Matiere uneMatiere : ms ){
+            float res = OutilsCalculs.moyenneEtudiantMatiere(rs, uneMatiere, e) ;
+            System.out.println(uneMatiere.libelleMatiere +": " +res);
+        }
     }
 
     @FXML
