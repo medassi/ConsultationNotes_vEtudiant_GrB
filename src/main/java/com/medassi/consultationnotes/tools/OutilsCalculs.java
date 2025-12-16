@@ -23,7 +23,15 @@ public class OutilsCalculs {
 
     //retourne la moyenne des notes de la matière "m" passée en paramètre
     public static float moyenneMatiere(ObservableList<Resultat> lesResultats, Matiere uneMatiere) {
-        throw new UnsupportedOperationException("A faire !!!");
+        float sommeDesNotes = 0;
+        float sommeDesCoeffs = 0;
+        for (Resultat r : lesResultats) {
+            if (r.devoir.matiere == uneMatiere) {
+                sommeDesNotes = sommeDesNotes + (r.note * r.devoir.coeffDevoir);
+                sommeDesCoeffs = sommeDesCoeffs + r.devoir.coeffDevoir;
+            }
+        }
+        return sommeDesNotes/sommeDesCoeffs ;
     }
 
     //retourne la moyenne des notes obtenues par l'étudiant "e" passé en paramètre dans la matière "m" passée en paramètre

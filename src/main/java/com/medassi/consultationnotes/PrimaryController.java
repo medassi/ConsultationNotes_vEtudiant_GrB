@@ -5,6 +5,7 @@ import com.medassi.consultationnotes.entities.Etudiant;
 import com.medassi.consultationnotes.entities.Matiere;
 import com.medassi.consultationnotes.entities.Resultat;
 import com.medassi.consultationnotes.entities.Devoir;
+import com.medassi.consultationnotes.tools.OutilsCalculs;
 import java.net.URL;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -81,12 +82,16 @@ public class PrimaryController implements javafx.fxml.Initializable {
 
     @FXML
     private void onActionRechercherMatiere(ActionEvent event) {
-        throw new UnsupportedOperationException("A faire !!!");
+        Matiere mSel = cbMatieres.getSelectionModel().getSelectedItem() ;
+        System.out.println("Moy APSLAM : " + OutilsCalculs.moyenneMatiere(rs, mSel));
     }
 
     @FXML
     private void onActionRechercherDevoir(ActionEvent event) {
-        throw new UnsupportedOperationException("A faire !!!");
+        Devoir dSelect = (Devoir) cbDevoirs.getSelectionModel().getSelectedItem();
+        System.out.println(dSelect.libelleDevoir);
+        float moyenneTCPIP = OutilsCalculs.moyenneDevoir(rs, dSelect) ;
+        System.out.println(moyenneTCPIP);
     }
 
 }
