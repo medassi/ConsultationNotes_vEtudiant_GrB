@@ -47,7 +47,6 @@ public class PrimaryController implements javafx.fxml.Initializable {
         chargementComboBoxes();
         alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Consultation des notes");
-        aEffacer();
         //updateGeneral();
     }
 
@@ -81,6 +80,7 @@ public class PrimaryController implements javafx.fxml.Initializable {
             float res = OutilsCalculs.moyenneEtudiantMatiere(rs, uneMatiere, e) ;
             System.out.println(uneMatiere.libelleMatiere +": " +res);
         }
+        System.out.println("Moyenne generale : " + OutilsCalculs.moyenneEtudiant(rs, ms, e));
     }
 
     @FXML
