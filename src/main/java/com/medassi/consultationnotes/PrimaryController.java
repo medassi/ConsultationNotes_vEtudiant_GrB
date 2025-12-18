@@ -47,7 +47,7 @@ public class PrimaryController implements javafx.fxml.Initializable {
         chargementComboBoxes();
         alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Consultation des notes");
-        //updateGeneral();
+        updateGeneral();
     }
 
     private void aEffacer() {
@@ -70,7 +70,18 @@ public class PrimaryController implements javafx.fxml.Initializable {
     }
 
     private void updateGeneral() {
-        throw new UnsupportedOperationException("A faire !!!");
+        float moyGene = OutilsCalculs.moyenne(rs, ms, es) ;
+        String libLabel = String.format("%.2f/20", moyGene) ;
+        labelGeneMoyenne.setText(libLabel);
+        
+        Etudiant looser = OutilsCalculs.moyenneEtudiantMini(rs, es, ms) ;
+        labelGeneMiniEtud.setText(looser+"");
+        labelGeneMiniNote.setText(String.format("%.2f/20", OutilsCalculs.moyenneEtudiant(rs, ms, looser)));
+        
+        Etudiant goat = OutilsCalculs.moyenneEtudiantMaxi(rs, es, ms) ;
+        labelGeneMaxiEtud.setText(goat+"");
+        labelGeneMaxiNote.setText(String.format("%.2f/20", OutilsCalculs.moyenneEtudiant(rs, ms, goat)));
+        
     }
 
     @FXML

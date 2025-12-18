@@ -71,12 +71,40 @@ public class OutilsCalculs {
 
     //retourne l'étudiant qui a obtenu la moyenne générale la plus faible 
     public static Etudiant moyenneEtudiantMini(ObservableList<Resultat> ns, ObservableList<Etudiant> es, ObservableList<Matiere> ms) {
-        throw new UnsupportedOperationException("A faire !!!");
+        float moyenneDeToi;
+        if (!es.isEmpty()) {
+            float miniActuel = moyenneEtudiant(ns, ms, es.get(0));
+            Etudiant leLooser = es.get(0);
+            for (Etudiant toi : es) {
+                moyenneDeToi = moyenneEtudiant(ns, ms, toi);
+                if (moyenneDeToi < miniActuel) {
+                    leLooser = toi;
+                    miniActuel = moyenneDeToi;
+                }
+            }
+            return leLooser;
+        } else {
+            return null;
+        }
     }
 
     //retourne l'étudiant qui a obtenu la moyenne générale la plus forte 
-    public static Etudiant moyenneEtudiantMaxi(ObservableList<Resultat> lesResultats, ObservableList<Etudiant> lesEtudiants, ObservableList<Matiere> lesMatieres) {
-        throw new UnsupportedOperationException("A faire !!!");
+    public static Etudiant moyenneEtudiantMaxi(ObservableList<Resultat> ns, ObservableList<Etudiant> es, ObservableList<Matiere> ms) {
+        float moyenneDeToi;
+        if (!es.isEmpty()) {
+            float miniActuel = moyenneEtudiant(ns, ms, es.get(0));
+            Etudiant leLooser = es.get(0);
+            for (Etudiant toi : es) {
+                moyenneDeToi = moyenneEtudiant(ns, ms, toi);
+                if (moyenneDeToi > miniActuel) {
+                    leLooser = toi;
+                    miniActuel = moyenneDeToi;
+                }
+            }
+            return leLooser;
+        } else {
+            return null;
+        }
     }
 
     //retourne l'étudiant qui a obtenu la moyenne générale la plus faible dans la matière "m" passée en paramètre 
