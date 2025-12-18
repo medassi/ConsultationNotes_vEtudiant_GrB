@@ -31,7 +31,7 @@ public class OutilsCalculs {
                 sommeDesCoeffs = sommeDesCoeffs + r.devoir.coeffDevoir;
             }
         }
-        return sommeDesNotes/sommeDesCoeffs ;
+        return sommeDesNotes / sommeDesCoeffs;
     }
 
     //retourne la moyenne des notes obtenues par l'étudiant "e" passé en paramètre dans la matière "m" passée en paramètre
@@ -44,25 +44,29 @@ public class OutilsCalculs {
                 sommeDesCoeffs = sommeDesCoeffs + r.devoir.coeffDevoir;
             }
         }
-        return sommeDesNotes/sommeDesCoeffs ;
+        return sommeDesNotes / sommeDesCoeffs;
     }
 
     //retourne la moyenne générale de l'étudiant e passé en paramètre
     public static float moyenneEtudiant(ObservableList<Resultat> lesResultats, ObservableList<Matiere> lesMatieres, Etudiant unEtudiant) {
-        float cumulMoyennes = 0 ;
-        float cumulCoeffs = 0 ;
-        for( Matiere mat : lesMatieres ){
-            float moyEtuDansMat = moyenneEtudiantMatiere(lesResultats, mat, unEtudiant) ;
-            float coeffMat = mat.coeffMatiere ;
-            cumulCoeffs = cumulCoeffs+coeffMat ;
-            cumulMoyennes = cumulMoyennes + moyEtuDansMat*coeffMat ;
+        float cumulMoyennes = 0;
+        float cumulCoeffs = 0;
+        for (Matiere mat : lesMatieres) {
+            float moyEtuDansMat = moyenneEtudiantMatiere(lesResultats, mat, unEtudiant);
+            float coeffMat = mat.coeffMatiere;
+            cumulCoeffs = cumulCoeffs + coeffMat;
+            cumulMoyennes = cumulMoyennes + moyEtuDansMat * coeffMat;
         }
-        return cumulMoyennes/cumulCoeffs ;
+        return cumulMoyennes / cumulCoeffs;
     }
 
     //retourne la moyenne générale de toutes les moyennes des étudiants 
     public static float moyenne(ObservableList<Resultat> lesResultats, ObservableList<Matiere> lesMatieres, ObservableList<Etudiant> lesEtudiants) {
-        throw new UnsupportedOperationException("A faire !!!");
+        float cumulMoyEtud = 0;
+        for (Etudiant e : lesEtudiants) {
+            cumulMoyEtud += moyenneEtudiant(lesResultats, lesMatieres, e);
+        }
+        return cumulMoyEtud / lesEtudiants.size();
     }
 
     //retourne l'étudiant qui a obtenu la moyenne générale la plus faible 
